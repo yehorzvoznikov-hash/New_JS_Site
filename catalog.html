@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopUA - Каталог</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="header-inner">
+            <a class="logo" href="index.html">ShopUA</a>
+            <nav>
+                <a class="nav-btn active" href="">Головна</a>
+                <a class="nav-btn" href="">Каталог</a>
+                <a class="nav-btn" href="">Про нас</a>
+                <a class="nav-btn" href="">
+                    Кошик <span class="cart-count" id="cart-count">0</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="section">
+            <div class="section-title">Каталог товарів</div>
+            <div class="categories" id="categories"></div>
+            <div class="products-grid" id="catalog-grid"></div>
+        </div>
+    </main>
+
+    <footer>ShopUA - Супер пупер!</footer>
+
+    <div class="toast" id="toast"></div>
+
+    <script src="js/products.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/utils.js"></script>
+</body>
+</html>
