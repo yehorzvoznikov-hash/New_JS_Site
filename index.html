@@ -41,5 +41,16 @@
     <script src="js/products.js"></script>
     <script src="js/cart.js"></script>
     <script src="js/utils.js"></script>
+    <script>
+        function renderFeatured() {
+            var container = document.getElementById("home-featured");
+            var featured = products.slice(0, 4);
+            for (let i = 0; i < featured.length; i++) {
+                container.appendChild(createProductCard(featured[i]));
+            }
+        }
+
+        renderFeatured();
+    </script>
 </body>
 </html>
