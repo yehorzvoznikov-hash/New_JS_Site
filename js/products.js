@@ -10,7 +10,7 @@ var products = [
     {
         id: 2,
         name: "Товар 2",
-        category: "Категорія 2",
+        category: "Категорія 1",
         price: 1000,
         emoji: "😊",
         desc: "Опис товару 2"

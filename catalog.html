@@ -36,5 +36,38 @@
     <script src="js/products.js"></script>
     <script src="js/cart.js"></script>
     <script src="js/utils.js"></script>
+    <script>
+        let activeCategory = "Усі";
+
+        function renderCategories() {
+            let container = document.getElementById("categories");
+            container.innerHTML = "";
+
+            let cats = ["Усі"];
+            for (let i = 0; i < products.length; i++) {
+                if (cats.indexOf(products[i].category) === -1) {
+                    cats.push(products[i].category);
+                }
+            }
+
+            for (let j = 0; j < cats.length; j++) {
+                
+            }
+        }
+
+        function renderGrid() {
+            let container = document.getElementById("catalog-grid");
+            container.innerHTML = "";
+
+            for (let i = 0; i < products.length; i++) {
+                if (activeCategory === "Усі" || products[i].category === activeCategory) {
+                    container.appendChild(createProductCard(products[i]));
+                }
+            }
+        }
+
+        renderCategories();
+        renderGrid();
+    </script>
 </body>
 </html>
