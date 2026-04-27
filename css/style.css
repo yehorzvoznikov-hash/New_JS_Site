@@ -267,3 +267,19 @@ footer {
     flex-wrap: wrap;
     margin-bottom: 32px;
 }
+
+.cat-btn {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  font-family: 'Fira Sans', sans-serif;
+  font-size: 14px;
+  padding: 8px 18px;
+  border-radius: 20px;
+  transition: all 0.2s;
+}
+.cat-btn:hover, .cat-btn.active {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}

@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ShopUA - Каталог</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
     <header>
         <div class="header-inner">
@@ -51,7 +53,17 @@
             }
 
             for (let j = 0; j < cats.length; j++) {
-                
+                var btn = document.createElement("button");
+                btn.className = "cat-btn" + (cats[j] === activeCategory ? " active" : "");
+                btn.textContent = cats[j];
+                btn.onclick = (function (c) {
+                    return function () {
+                        activeCategory = c;
+                        renderCategories();
+                        renderGrid();
+                    };
+                })(cats[j]);
+                container.appendChild(btn);
             }
         }
 
@@ -70,4 +82,5 @@
         renderGrid();
     </script>
 </body>
+
 </html>
