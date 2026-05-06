@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ShopUA - Кошик</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
     <header>
         <div class="header-inner">
@@ -35,5 +37,63 @@
     <script src="js/products.js"></script>
     <script src="js/cart.js"></script>
     <script src="js/utils.js"></script>
+    <script>
+        function renderCart() {
+            let container = document.getElementById("cart-content");
+            container.innerHTML = "";
+
+            let cart = loadCart();
+
+            if (cart.length === 0) {
+                container.innerHTML =
+                    '<div class="cart-empty">' +
+                    '<div class="empty-icon">🛒</div>' +
+                    '<p>Кошик порожній</p>' +
+                    '<a class="btn-primary" href="catalog.html" style="margin-top:16px">До каталогу</a>' +
+                    '</div>';
+                return;
+            }
+
+            let total = 0;
+
+            for (let i = 0; i < cart.length; i++) {
+                let item = cart[i];
+                let p = getProduct(item.productId);
+                if (!p) continue;
+
+                let itemTotal = p.price * item.qty;
+                total += itemTotal;
+
+                let div = document.createElement("div");
+                div.className = "cart-item";
+                div.innerHTML =
+                    '<div class="cart-item-img">' + p.emoji + '</div>' +
+                    '<div class="cart-item-info">' +
+                    '<div class="cart-item-name">' + p.name + '</div>' +
+                    '<div class="cart-item-price">' + p.price + 'UAH x ' + item.qty + '</div>' +
+                    '</div>' +
+                    '<div class="cart-item-right">' +
+                    '<div class="cart-item-total">' + itemTotal + ' UAH</div>' +
+                    '<button class="remove-btn" onClick="deleteItem(' + p.id + ')" title="Видалити">X</button>' +
+                    '</div>';
+                container.appendChild(div);
+            }
+
+            let delivery = total >= 1000 ? "Безкоштовно" : "60 UAH";
+            let deliveryCost = total >= 1000 ? 0 : 60;
+
+            let summary = document.createElement("div");
+            summary.className = "cart-summary";
+            summary.innerHTML =
+                '<div class="summary-row"><span>Товари</span><span>' + total + ' ₴</span></div>' +
+                '<div class="summary-row"><span>Доставка</span><span>' + delivery + '</span></div>' +
+                '<div class="summary-row total"><span>Разом</span><span>' + (total + deliveryCost) + ' ₴</span></div>' +
+                '<a class="btn-primary" href="order.html" style="display:block;text-align:center;margin-top:20px">Оформити замовлення</a>';
+            container.appendChild(summary);
+        }
+
+        updateCartCount();
+        renderCart();
+    </script>
 </body>
 </html>
