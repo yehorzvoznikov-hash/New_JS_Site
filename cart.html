@@ -41,9 +41,9 @@
         function renderCart() {
             let container = document.getElementById("cart-content");
             container.innerHTML = "";
-
+ 
             let cart = loadCart();
-
+ 
             if (cart.length === 0) {
                 container.innerHTML =
                     '<div class="cart-empty">' +
@@ -53,17 +53,17 @@
                     '</div>';
                 return;
             }
-
+ 
             let total = 0;
-
+ 
             for (let i = 0; i < cart.length; i++) {
                 let item = cart[i];
                 let p = getProduct(item.productId);
                 if (!p) continue;
-
+ 
                 let itemTotal = p.price * item.qty;
                 total += itemTotal;
-
+ 
                 let div = document.createElement("div");
                 div.className = "cart-item";
                 div.innerHTML =
@@ -78,10 +78,10 @@
                     '</div>';
                 container.appendChild(div);
             }
-
+ 
             let delivery = total >= 1000 ? "Безкоштовно" : "60 UAH";
             let deliveryCost = total >= 1000 ? 0 : 60;
-
+ 
             let summary = document.createElement("div");
             summary.className = "cart-summary";
             summary.innerHTML =
@@ -91,7 +91,11 @@
                 '<a class="btn-primary" href="order.html" style="display:block;text-align:center;margin-top:20px">Оформити замовлення</a>';
             container.appendChild(summary);
         }
-
+        function deleteItem(id) {
+            removeFromCart(id);
+            renderCart();
+        }
+       
         updateCartCount();
         renderCart();
     </script>

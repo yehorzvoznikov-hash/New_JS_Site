@@ -22,3 +22,18 @@ function createProductCard(p) {
 
     return a;
 }
+
+let toastTimer = null;
+
+function showToast(msg) {
+    let el = document.getElementById("toast");
+    if (!el) return;
+
+    el.textContent = msg;
+    el.classList.add("show");
+
+    if (toastTimer) clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () {
+        el.classList.remove("show");
+    }, 2000);
+}

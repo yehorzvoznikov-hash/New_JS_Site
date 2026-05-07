@@ -31,6 +31,7 @@ function addToCart(id, qty) {
 
     saveCart(cart);
     updateCartCount();
+    showToast("✔ Додано в кошик!");
 }
 
 function removeFromCart(id) {
